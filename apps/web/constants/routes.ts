@@ -12,6 +12,7 @@ export const ROUTES = {
   DOCS_REGISTRY: "/docs/registry",
   DOCS_THEMES: "/docs/themes",
   DOCS_THEMING: "/docs/theming",
+  COMMUNITY: "/community",
   HOME: "/",
   LLMS: "/llms.txt",
   LLMS_FULL: "/llms-full.txt",
