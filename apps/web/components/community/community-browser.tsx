@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  ArrowUpRight,
-  Calendar,
-  FileText,
-  Heart,
-  Search,
-} from "lucide-react";
+import { ArrowUpRight, Calendar, FileText, Heart, Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
@@ -169,9 +163,7 @@ export const CommunityBrowser = () => {
           <div className="flex gap-2">
             <Select
               value={base}
-              onValueChange={(value) =>
-                setBase(value as CommunityBase | "all")
-              }
+              onValueChange={(value) => setBase(value as CommunityBase | "all")}
             >
               <SelectTrigger className="w-36" aria-label="Filter by base">
                 <SelectValue placeholder="Base" />
@@ -307,7 +299,10 @@ export const CommunityBrowser = () => {
         </div>
       )}
 
-      <Dialog open={!!selected} onOpenChange={(open) => !open && setSelected(null)}>
+      <Dialog
+        open={!!selected}
+        onOpenChange={(open) => !open && setSelected(null)}
+      >
         <DialogContent className="max-w-xl">
           {selected && (
             <>
@@ -319,10 +314,7 @@ export const CommunityBrowser = () => {
               <div className="flex flex-wrap items-center gap-1.5">
                 <Badge
                   variant="outline"
-                  className={cn(
-                    "capitalize",
-                    baseBadgeClass[selected.base]
-                  )}
+                  className={cn("capitalize", baseBadgeClass[selected.base])}
                 >
                   {selected.base}
                 </Badge>

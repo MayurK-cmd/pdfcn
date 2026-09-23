@@ -18,14 +18,16 @@ export interface CommunityTemplate {
   title: string;
 }
 
-export const COMMUNITY_BASES: { label: string; value: CommunityBase | "all" }[] =
-  [
-    { label: "All bases", value: "all" },
-    { label: "Takumi", value: "takumi" },
-    { label: "Forme", value: "forme" },
-    { label: "pdfme", value: "pdfme" },
-    { label: "Elements", value: "elements" },
-  ];
+export const COMMUNITY_BASES: {
+  label: string;
+  value: CommunityBase | "all";
+}[] = [
+  { label: "All bases", value: "all" },
+  { label: "Takumi", value: "takumi" },
+  { label: "Forme", value: "forme" },
+  { label: "pdfme", value: "pdfme" },
+  { label: "Elements", value: "elements" },
+];
 
 export const COMMUNITY_SORTS = [
   { label: "Newest", value: "newest" },
@@ -182,9 +184,9 @@ export const COMMUNITY_TEMPLATES: CommunityTemplate[] = [
   },
 ];
 
-export const ALL_COMMUNITY_TAGS = Array.from(
-  new Set(COMMUNITY_TEMPLATES.flatMap((t) => t.tags))
-).sort();
+export const ALL_COMMUNITY_TAGS = [
+  ...new Set(COMMUNITY_TEMPLATES.flatMap((t) => t.tags)),
+].toSorted();
 
 export const getInstallCommand = (template: CommunityTemplate) =>
   `npx shadcn@latest add @pdfcn/${template.base}/${template.blockSlug}`;
@@ -253,7 +255,7 @@ export const filterCommunityTemplates = (
     );
   });
 
-  return [...filtered].sort((a, b) => {
+  return filtered.toSorted((a, b) => {
     if (filters.sort === "liked") {
       return b.likes - a.likes;
     }
@@ -262,8 +264,6 @@ export const filterCommunityTemplates = (
       return a.title.localeCompare(b.title);
     }
 
-    return (
-      new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime()
-    );
+    return new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime();
   });
 };
