@@ -5,16 +5,25 @@ import { pointToCssPixel } from "@/registry/bases/takumi/lib/pdf-primitives";
 const DEFAULT_MARGIN = 40;
 
 const BLOCK_NAMES = new Set([
+  "event-agenda",
+  "event-ticket",
   "invoice-classic",
   "invoice-consultant",
   "invoice-corporate",
   "invoice-creative",
   "invoice-minimal",
   "invoice-modern",
+  "lesson-plan",
+  "medical-intake-form",
+  "meeting-minutes",
+  "packing-slip",
+  "press-release",
   "report-financial",
   "report-marketing",
   "report-operations",
   "report-security",
+  "shipping-label",
+  "work-order",
 ]);
 
 const COMPONENT_MARGINS: Record<string, number> = {
@@ -34,6 +43,10 @@ const COMPONENT_SIZES: Record<
   Extract<RenderOptions, { viewport?: never }>["size"]
 > = {
   badge: { height: pointToCssPixel(200), width: pointToCssPixel(595) },
+  "event-ticket": {
+    height: pointToCssPixel(252),
+    width: pointToCssPixel(504),
+  },
   "page-footer": {
     height: pointToCssPixel(300),
     width: pointToCssPixel(595),
@@ -41,6 +54,10 @@ const COMPONENT_SIZES: Record<
   "page-header": {
     height: pointToCssPixel(240),
     width: pointToCssPixel(595),
+  },
+  "shipping-label": {
+    height: pointToCssPixel(432),
+    width: pointToCssPixel(288),
   },
 };
 
